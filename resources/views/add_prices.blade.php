@@ -23,22 +23,8 @@
 	        background-image: linear-gradient(to right, #486A7C, #619BBA);
             }
 
-.navbar-brand{color: white!important;}
-.nav-link{color:white!important;}
-.nav-link:hover{color:#61BAA2!important;}
-.navbar-brand{
-	font-family: "Dollie Script Personal Use"
-}
-.navbar-brand{font-style: italic !important;}
-.navbar-brand{font-size: 30px !important;}
-.navbar-toggler{color:white!important;}
 .navbar-toggler-icon{
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-.linkai{
-	font-size: 22px; 
-	font-family: "Franklin Gothic Demi";
-	padding-right: .50rem !important;
 }
 body{
 	background-image: url("/image/background1.png");
@@ -46,68 +32,42 @@ body{
         </style>
     </head>
     <body class="antialiased">
-        <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg ">
-            <div class="container-fluid">
-                <a href="" class="navbar-brand font-italic">Šunų prižiūrėjimas Kaune</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse navbar-collapse justify-content-end" id="navbarCollapse">
-                    <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
-                    <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
-                    <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
-                    <div class="navbar-nav">
-                        @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="linkai nav-link text-sm text-gray-700 dark:text-gray-500 underline">Pradinis</a>
-                    @else
-                        <a href="{{ route('login') }}" class="linkai nav-link text-sm text-gray-700 dark:text-gray-500 underline">Prisijungimas</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="linkai nav-link ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registracija</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-                    </div>
-                </div>
-            </div>
-        </nav>
-    <main>
-        <div class="container mt-4">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="/image/foto.png" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/image/foto2.png" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/image/foto3.png" class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-            <div class="d-flex justify-content-center">
-            <div class="col-md-10">
-                <h1 class="text-center p-4" style="font-family: Impact; font-size: 45px; color:#5F9EA0;">Šunų prižiūrėjimas Kaune!</h1>
-                <p style="font-size: 22px; font-family: Times New Roman";>Sveiki, esu Pijus Černiauskas šio puslapio įkūrėjas bei asmuo, kuris prižiūrės Jūsų augintinį. Turiu daugiau nei 5 metų patirties šiame darbe. Todėl galiu Jums pasiūlyti patikimą bei atsakingą šunų priežiūrą. Gyvenu didelėje teritoryje esančiame name, kuriame šunys turės daug laisvės ne tik namo viduje, bet ir lauke. Galiu Jūsų šunis prižiūrėti ne tik savo namuose, bet ir atvykti į Jūsų namus esančius Kaune. Jums pažadu savo kaip žmogaus sąžiningumą, nuoširdumą bei rūpestingumą Jūsų šuns priežiūrai, kad šuo nepajaustu, jog savininkų nėra šalia.</p>
-            </div>
-            </div>
-        </div>
+    <main>  
+<div class="container mt-4">
+    <a href="{{ url('/prices') }}" class="btn btn-success btn-lg">Atgal</a>
+    <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0;">Kainos</h1>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tipas</th>
+            <th scope="col">Nurodyta kaina</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+    <tbody>
+    @foreach ($prices as $prices2)
+        <tr>
+            <th scope="row">{{ $prices2->id }}</th>
+            <td>{{$prices2->tipas }}</td>
+            <td>{{$prices2->nurodyta_kaina }}</td>
+            <td>{{ Str::limit($prices2->description, 50) }}</td>
+            <td>
+                <a class='no-underline' href="/add_prices/edit/{{$prices2->id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                  </svg></a>
+                <a class='no-underline' href="/add_prices/remove/{{$prices2->id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                  </svg></a>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+    </table>
+</div>
     </main>
-    <footer>
-        <div class="text-center p-3" style="background-image: linear-gradient(to right, #486A7C, #619BBA); margin-top: 40px;">© 2022 Darbą atliko Pijus Černiauskas</div>
-    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>
