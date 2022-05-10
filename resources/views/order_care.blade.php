@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Šunų prižiūrėjimo sistema</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -85,6 +85,7 @@ body{
               <div class="d-flex justify-content-center">
                 <div class="col-md-10">
                     <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0;">Paslaugų grafikas</h1>
+                    <h1 class="text-center p-4" style="font-family: Impact; font-size: 23px;">Pasirinkite iš žemiau esančios lentelės norima dieną bei surašykite tos dienos (metus, mėnesi ir norimas valandas) į tam skirtus laukus</h1>
                     @if ($errors->any())
                       <div class="alert alert-danger">
                         <ul>
@@ -129,7 +130,9 @@ body{
                       </div>
                       <h1 class="text-center p-4" style="font-family: Impact; font-size: 25px; color:red;">Būtina pasirinkti norimą prižiūrėjimo būda kitaip paslaugos negalėsite užsisakyti</h1>
                       <div class="d-grid gap-2 d-md-flex justify-content-md-end " style="margin-top: 40px;">
+                        <button type="submit" class="btn btn-outline-success btn-lg ">Paieška</button>
                         <button type="submit" class="btn btn-outline-success btn-lg ">Užsisakyti</button>
+                        
                       </div>
                     </form>
                     </div>           

@@ -2154,4 +2154,12 @@ select {
     padding-right: 2rem;
   }
 }
+.big-blue{
+  --tw-bg-opacity: 1;
+  background-color: rgb(95 158 160 / var(--tw-bg-opacity))
+}
+#login-name{
+  font-size: 50px;
+  font-family: "Dollie Script Personal Use"
+}
 

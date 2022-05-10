@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Šunų prižiūrėjimo sistema</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@ body{
     <body class="antialiased">
         <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg ">
             <div class="container-fluid">
-                <a href="" class="navbar-brand font-italic">Šunų prižiūrėjimas Kaune</a>
+                <a href="{{ url('/welcome') }}" class="navbar-brand font-italic">Šunų prižiūrėjimas Kaune</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -58,7 +58,7 @@ body{
                     <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                     <div class="navbar-nav">
                         @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block ">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="linkai nav-link text-sm text-gray-700 dark:text-gray-500 underline">Pradinis</a>
                     @else

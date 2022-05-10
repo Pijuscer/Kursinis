@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Šunų prižiūrėjimo sistema</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -46,6 +46,9 @@ body{
 	font-size: 22px; 
 	font-family: "Franklin Gothic Demi";
 	padding-right: .50rem !important;
+}
+.searchTerm{
+    width: 350px;
 }
         </style>
     </head>
@@ -118,6 +121,16 @@ body{
                     </form>
                     </div>           
                 </div>
+                <div class="row justify-content-center" style="margin-top: 40px;">
+                  <div class="col-4 ">
+                  <form action="/working_days/search" method="get">
+                      <input class="searchTerm" type="text" placeholder="Paieška.." name="query">
+                      <button class="btn btn-outline-info" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg></button>
+                  </form>
+                  </div>
+                  </div>
                 <div class="row justify-content-center">
                   <div class="col-6 ">
                   <table class="table table-success table-striped" style="margin-top: 80px;">

@@ -94,7 +94,15 @@ class DogCareController extends Controller
         return redirect('/add_dog_care');
     }
     public function search(){
-        $DogCare = DogCare::where('vardas', 'LIKE', '%' .$_GET['quary'].'%')->get();
+        $DogCare = DogCare::where('vardas', 'LIKE', '%' .$_GET['query'].'%')->
+        orWhere('pavarde', $_GET['query'])->
+        orWhere('telefono_numeris', $_GET['query'])->
+        orWhere('adresas', $_GET['query'])->
+        orWhere('suns_veisle', $_GET['query'])->
+        orWhere('suns_amzius', $_GET['query'])->
+        orWhere('suns_svoris', $_GET['query'])->
+        orWhere('draugiskas', $_GET['query'])->
+        orWhere('alergiskas', $_GET['query'])->get();
 
         return view('DogCare', compact('DogCare'));
     }

@@ -55,6 +55,7 @@ Route::get('/add_cares/remove/{id}', [CareController::class, 'remove']);
 Route::get('/working_days', [WorkingDayController::class, 'viewForm']);
 Route::post('/working_days', [WorkingDayController::class, 'store']);
 Route::get('/working_days', [WorkingDayController::class, 'index']);
+Route::get('/working_days/search', [WorkingDayController::class, 'search']);
 Route::get('/order_care', [WorkingDayController::class, 'index2']);
 
 ///Route::get('/order_care', function () {

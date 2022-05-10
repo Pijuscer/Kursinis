@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Šunų prižiūrėjimo sistema</title>
  <!-- Fonts -->
  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -38,13 +38,6 @@ body{
 	background-image: url("/image/background1.png");
 }
 </style>
-<x-app-layout>
-  <x-slot name="header">
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ __('Dashboard') }}
-      </h2>
-  </x-slot>
-</x-app-layout>
 <body class="antialiased">
   <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg">
     <div class="container-fluid">
@@ -83,7 +76,7 @@ body{
 <div>
   <div class="d-flex justify-content-center">
     <div class="col-md-10">
-<h3 class="my-3 text-center" style="font-family: Impact; font-size: 50px; color:#5F9EA0; ">Profilis</h3>
+<h3 class="my-3 text-center" style="font-family: Impact; font-size: 50px; color:#5F9EA0;">Profilis</h3>
 @if ($errors->any())
   <div class="alert alert-danger">
     <ul>
@@ -133,9 +126,9 @@ body{
       <input value="{{ old('alergiskas') }}" type="text" class="form-control" id="alergiskas" name="alergiskas">
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 60px;">
-      <button type="submit" class="btn btn-outline-success">Išsaugoti</button>
+      <button type="submit" class="btn btn-outline-success btn-lg">Išsaugoti</button>
       @if (auth()->user()->admin)
-      <a href="{{ url('/dog_care') }}" class="btn btn-success">Redaguoti</a>
+      <a href="{{ url('/dog_care') }}" class="btn btn-success btn-lg">Redaguoti</a>
       @endif
     </div>
   </form>
@@ -144,7 +137,7 @@ body{
 </div>
 </main>
     <footer>
-      <div class="text-center p-3" style="background-image: linear-gradient(to right, #486A7C, #619BBA); margin-top: 40px;">© 2022 Darbą atliko Pijus Černiauskas</div>
+      <div class="text-center p-3" style="background-image: linear-gradient(to right, #486A7C, #619BBA); margin-top: 80px;">© 2022 Darbą atliko Pijus Černiauskas</div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

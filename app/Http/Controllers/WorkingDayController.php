@@ -43,4 +43,12 @@ class WorkingDayController extends Controller
 
         return redirect('/working_days');
     }
+    public function search(){
+        $working_days = working_day::where('metai', 'LIKE', '%' .$_GET['query'].'%')->
+        orWhere('menesis', $_GET['query'])->
+        orWhere('diena', $_GET['query'])->
+        orWhere('laisvumas', $_GET['query'])->get();
+
+        return view('working_days', compact('working_days'));
+    }
 }
