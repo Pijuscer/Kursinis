@@ -12,6 +12,7 @@ class DogCareController extends Controller
         $DogCare = DogCare::all();
         return view('DogCare',compact('DogCare'));
     }
+
     public function viewForm(){
         //TODO: fentch countries from database
         return view('add_dog_cares');
@@ -20,13 +21,14 @@ class DogCareController extends Controller
     public function store(Request $request){
         //Validacija
         $validated = $request -> validate([
+            'user_id',
             'vardas' => 'required|max:225',
             'pavarde' => 'required|max:225',
             'telefono_numeris' => 'required|max:225',
             'adresas' => 'required|max:225',
             'suns_veisle' => 'required|max:225',
             'suns_amzius' => 'required|max:225',
-            'suns_svoris' => 'required|max:225',
+            'suns_svoris' => 'required|max:225|regex:/^[0-9]+$/',
             'draugiskas' => 'required|max:225',
             'alergiskas' => 'required|max:225',
             
@@ -34,6 +36,7 @@ class DogCareController extends Controller
         ]);
 
         DogCare::create([
+            'user_id'=> auth()->user()->id,
             'vardas' => request('vardas'),
             'pavarde' => request('pavarde'),
             'telefono_numeris' => request('telefono_numeris'),
@@ -54,21 +57,24 @@ class DogCareController extends Controller
         return view('edit_dog_cares',compact("Dog_care"));
     }
     public function edit(Request $request, $id){
+        
          //Validacija
 
          $validated = $request -> validate([
+            'user_id',
             'vardas' => 'required|max:225',
             'pavarde' => 'required|max:225',
             'telefono_numeris' => 'required|max:225',
             'adresas' => 'required|max:225',
             'suns_veisle' => 'required|max:225',
             'suns_amzius' => 'required|max:225',
-            'suns_svoris' => 'required|max:225',
+            'suns_svoris' => 'required|max:225|regex:/^[0-9]+$/',
             'draugiskas' => 'required|max:225',
             'alergiskas' => 'required|max:225',
          ]);
         $Dog_care = DogCare::where('id', $id)->firstOrFail();
-
+        
+       
         $Dog_care->vardas = request('vardas');
         $Dog_care->pavarde = request('pavarde');
         $Dog_care->telefono_numeris = request('telefono_numeris');

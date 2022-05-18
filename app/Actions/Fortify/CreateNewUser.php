@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SunuPrieziuraWelcome;
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
@@ -29,11 +30,13 @@ class CreateNewUser implements CreatesNewUsers
 
         $admin = (User::all()->count() == 0) ? true : false;
 
-        return User::create([
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'admin'=> $admin,
             'password' => Hash::make($input['password']),
         ]);
+        Mail::to($user)->send(new SunuPrieziuraWelcome($user));
+        return $user;
     }
 }

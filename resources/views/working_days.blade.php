@@ -66,7 +66,6 @@ body{
                 <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                 <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
                 <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
-                <a href="{{ url('/orders') }}" class="linkai nav-link">Užsakymai</a>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Auth::user()->name }}
@@ -101,19 +100,19 @@ body{
                       @csrf
                       <div class="col-md-6">
                         <label for="metai" class="form-label" style="font-family: Impact; font-size: 20px;">Metai</label>
-                        <input value="{{ old('metai') }}" type="text" class="form-control" id="metai" name="metai">
+                        <input value="{{ old('metai') }}" type="text" class="form-control" id="metai" name="metai" placeholder="Įrašomi metai">
                       </div>
                       <div class="col-md-6">
                         <label for="menesis" class="form-label" style="font-family: Impact; font-size: 20px;">Mėnesis</label>
-                        <input value="{{ old('menesis') }}" type="text" class="form-control" id="menesis" name="menesis">
+                        <input value="{{ old('menesis') }}" type="text" class="form-control" id="menesis" name="menesis" placeholder="Įrašomas mėnuo">
                       </div>
                       <div class="col-md-6">
                         <label for="diena" class="form-label" style="font-family: Impact; font-size: 20px;">Diena</label>
-                        <input value="{{ old('diena') }}" type="text" class="form-control" id="diena" name="diena">
+                        <input value="{{ old('diena') }}" type="number" class="form-control" id="diena" name="diena" placeholder="Įrašoma diena">
                       </div>
                       <div class="col-md-6">
                         <label for="laisvumas" class="form-label" style="font-family: Impact; font-size: 20px;">Nurodytos darbo laisvos valandos</label>
-                        <input value="{{ old('laisvumas') }}" type="text" class="form-control" id="laisvumas" name="laisvumas">
+                        <input value="{{ old('laisvumas') }}" type="text" class="form-control" id="laisvumas" name="laisvumas" placeholder="Įrašomas laisvumas valandų">
                       </div>
                       <div class="col-12" style="margin-top: 40px;">
                         <button type="submit" class="btn btn-outline-success btn-lg">Pridėti</button>
@@ -141,6 +140,12 @@ body{
                         <th scope="col">Diena</th>
                         <th scope="col">Laisvumas</th>
                         <th scope="col"></th>
+                        <th scope="col"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                          <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                        </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                          <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                        </svg></th>
                       </tr>
                     </thead>
                 <tbody>
@@ -151,6 +156,16 @@ body{
                         <td>{{$working_days2->diena }}</td>
                         <td>{{$working_days2->laisvumas }}</td>
                         <td>{{ Str::limit($working_days2->description, 50) }}</td>
+                        <td>
+                          <a class='no-underline' href="/working_days/edit/{{$working_days2->id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                              <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                            </svg></a>
+                          <a class='no-underline' href="/working_days/remove/{{$working_days2->id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg></a>
+                      </td>
                     </tr>
                     @endforeach
                 </tbody>

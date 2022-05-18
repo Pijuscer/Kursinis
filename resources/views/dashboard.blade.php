@@ -52,7 +52,6 @@ body{
                 <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                 <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
                 <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
-                <a href="{{ url('/orders') }}" class="linkai nav-link">Užsakymai</a>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }}

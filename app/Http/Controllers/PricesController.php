@@ -21,7 +21,7 @@ class PricesController extends Controller
         //Validacija
         $validated = $request -> validate([
             'tipas' => 'required|max:225',
-            'nurodyta_kaina' => 'required|max:225',
+            'nurodyta_kaina' => 'required|max:225|regex:/^[0-9]+$/',
 
         ]);
 
@@ -42,7 +42,7 @@ class PricesController extends Controller
 
          $validated = $request -> validate([
             'tipas' => 'required|max:225',
-            'nurodyta_kaina' => 'required|max:225',
+            'nurodyta_kaina' => 'required|max:225|regex:/^[0-9]+$/',
     
          ]);
 

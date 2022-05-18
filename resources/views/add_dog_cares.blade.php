@@ -55,7 +55,6 @@ body{
               <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
               <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
               <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
-              <a href="{{ url('/orders') }}" class="linkai nav-link">Užsakymai</a>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ Auth::user()->name }}
@@ -90,45 +89,45 @@ body{
     @csrf
     <div class="col-md-6">
       <label for="vardas" class="form-label" style="font-family: Impact; font-size: 20px;">Vardas</label>
-      <input value="{{ old('vardas') }}" type="text" class="form-control" id="vardas" name="vardas">
+      <input value="{{ old('vardas') }}" type="text" class="form-control" id="vardas" name="vardas" placeholder="Įrašykite savo vardą">
     </div>
     <div class="col-md-6">
       <label for="pavarde" class="form-label" style="font-family: Impact; font-size: 20px;">Pavardė</label>
-      <input value="{{ old('pavarde') }}" type="text" class="form-control" id="pavarde" name="pavarde">
+      <input value="{{ old('pavarde') }}" type="text" class="form-control" id="pavarde" name="pavarde" placeholder="Įrašykite savo pavardę">
     </div>
     <div class="col-md-6">
       <label for="telefono_numeris" class="form-label" style="font-family: Impact; font-size: 20px;">Telefono numeris</label>
-      <input value="{{ old('telefono_numeris') }}" type="text" class="form-control" id="telefono_numeris" name="telefono_numeris">
+      <input value="{{ old('telefono_numeris') }}" type="text" class="form-control" id="telefono_numeris" name="telefono_numeris" placeholder="Įrašykite savo telefono numerį">
     </div>
     <div class="col-md-6">
       <label for="adresas" class="form-label" style="font-family: Impact; font-size: 20px;">Adresas</label>
-      <input value="{{ old('adresas') }}" type="text" class="form-control" id="adresas" name="adresas">
+      <input value="{{ old('adresas') }}" type="text" class="form-control" id="adresas" name="adresas" placeholder="Įrašykite savo namų adresą">
     </div>
     <h3 class="my-3 text-center" style="font-family: Impact; font-size: 50px; color:#5F9EA0;">Gyvūno duomenys</h3>
     <div class="col-md-6">
       <label for="suns_veisle" class="form-label" style="font-family: Impact; font-size: 20px;">Šuns veislė</label>
-      <input value="{{ old('suns_veisle') }}" type="text" class="form-control" id="suns_veisle" name="suns_veisle">
+      <input value="{{ old('suns_veisle') }}" type="text" class="form-control" id="suns_veisle" name="suns_veisle" placeholder="Įrašykite šuns veislę">
     </div>
     <div class="col-md-6">
       <label for="suns_amzius" class="form-label" style="font-family: Impact; font-size: 20px;">Šuns amžius</label>
-      <input value="{{ old('suns_amzius') }}" type="text" class="form-control" id="suns_amzius" name="suns_amzius">
+      <input value="{{ old('suns_amzius') }}" type="text" class="form-control" id="suns_amzius" name="suns_amzius" placeholder="Įrašykite šuns amžių">
     </div>
     <div class="col-md-6">
       <label for="suns_svoris" class="form-label" style="font-family: Impact; font-size: 20px;">Šuns svoris (kg)</label>
-      <input value="{{ old('suns_svoris') }}" type="text" class="form-control" id="suns_svoris" name="suns_svoris">
+      <input value="{{ old('suns_svoris') }}" type="text" class="form-control" id="suns_svoris" name="suns_svoris" placeholder="Įrašykite šuns svorį">
     </div>
     <div class="col-md-6">
       <label for="draugiskas" class="form-label" style="font-family: Impact; font-size: 20px;">Ar draugiškas su žmonėmis ir su kitais šunimis?</label>
-      <input value="{{ old('draugiskas') }}" type="text" class="form-control" id="draugiskas" name="draugiskas">
+      <input value="{{ old('draugiskas') }}" type="text" class="form-control" id="draugiskas" name="draugiskas" placeholder="Įrašykite ar draugiškas su žmonėmis ir su kitais šunimis">
     </div>
     <div class="col-md-6">
       <label for="alergiskas" class="form-label" style="font-family: Impact; font-size: 20px;">Ar alergiškas kam nors?</label>
-      <input value="{{ old('alergiskas') }}" type="text" class="form-control" id="alergiskas" name="alergiskas">
+      <input value="{{ old('alergiskas') }}" type="text" class="form-control" id="alergiskas" name="alergiskas" placeholder="Įrašykite ar šuo yra alergiškas">
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 60px;">
       <button type="submit" class="btn btn-outline-success btn-lg">Išsaugoti</button>
       @if (auth()->user()->admin)
-      <a href="{{ url('/dog_care') }}" class="btn btn-success btn-lg">Redaguoti</a>
+      <a href="{{ url('/dog_care') }}" class="btn btn-success btn-lg">Profiliai</a>
       @endif
     </div>
   </form>

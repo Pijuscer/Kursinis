@@ -9,6 +9,7 @@ class DogCare extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'vardas',
         'pavarde',
         'telefono_numeris',

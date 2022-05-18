@@ -35,13 +35,17 @@
 .navbar-toggler-icon{
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
+body{
+	background-image: url("/image/background1.png");
+}
+
+.navbar-nav{
+    color: white;
+}
 .linkai{
 	font-size: 22px; 
 	font-family: "Franklin Gothic Demi";
 	padding-right: .50rem !important;
-}
-body{
-	background-image: url("/image/background1.png");
 }
         </style>
     </head>
@@ -56,9 +60,9 @@ body{
               <div class="navbar-nav navbar-collapse justify-content-end">
                 <a href="{{ url('/add_dog_care') }}" class="linkai nav-link">Profilis</a>
                 @if (auth()->user()->admin)
-                <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
-                @else
-                @endif
+                      <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
+                      @else
+                      @endif
                 <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                 <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
                 <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
@@ -73,61 +77,53 @@ body{
                           <button type="submit" class="dropdown-item" style="border: none; background-color: Transparent; " >Atsijungti</button>
                       </form>
                       </ul>
-                    </div> 
+                  </div> 
               </div>
-          </div>
+            </div>
         </div>
     </nav>
     <main>
         <div class="container mt-4">
-            <div class="row">
             <div class="d-flex justify-content-center">
-            <div class="col-md-10">
-                <h1 class="text-center p-4" style="font-family: Impact; font-size: 45px; color:#5F9EA0; margin-top: 40px;">Apie šunų prižūrėjimo paslaugą</h1>
-                <p style="font-size: 22px; font-family: Times New Roman;">Sveiki, esu Pijus Černiauskas šio puslapio įkūrėjas bei asmuo, kuris prižiūrės Jūsų augintinį. Turiu daugiau nei 5 metų patirties šiame darbe. Todėl galiu Jums pasiūlyti patikimą bei atsakingą šunų priežiūrą. Gyvenu didelėje teritoryje esančiame name, kuriame šunys turės daug laisvės ne tik namo viduje, bet ir lauke. Galiu Jūsų šunis prižiūrėti ne tik savo namuose, bet ir atvykti į Jūsų namus esančius Kaune. Jums pažadu savo kaip žmogaus sąžiningumą, nuoširdumą bei rūpestingumą Jūsų šuns priežiūrai, kad šuo nepajaustu, jog savininkų nėra šalia.</p>
-                <h1 class="text-center p-4" style="font-family: Impact; font-size: 45px; color:#5F9EA0; margin-top: 40px;">Kontaktai</h1>
-            <div class="container">
-                <div class="row g-2">
-                      <div class="col-4 text-center" style="font-size: 22px; font-family: Times New Roman;">
-                        Telefono numeris
-                      </div>
-                      <div class="col-4 text-center" style="font-size: 22px; font-family: Times New Roman;">
-                        Adresas
-                      </div>
-                      <div class="col-4 text-center" style="font-size: 22px; font-family: Times New Roman;">
-                        Elektroninis paštas
-                      </div>
-                </div>
-                <div class="row g-2">
-                    <div class="col-4 text-center" style="font-size: 22px; font-family: Times New Roman;">
-                      +37061111111
+              <div class="col-md-10">
+                <a href="{{ url('/working_days') }}" class="btn btn-success btn-lg">Atgal</a>
+                  <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0;">Laisvumas</h1>
+                  @if ($errors->any())
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
                     </div>
-                    <div class="col-4 text-center" style="font-size: 22px; font-family: Times New Roman;">
-                      Naujoji gatvė 1 (Žaliakalnis)
+                  @endif
+                  <form action="" method="POST" class="row g-3" style="margin-top: 40px;">
+                    @csrf
+                    <div class="col-md-6">
+                      <label for="metai" class="form-label" style="font-family: Impact; font-size: 20px;">Metai</label>
+                      <input value="{{ $working_days->metai }}" type="text" class="form-control" id="metai" name="metai">
                     </div>
-                    <div class="col-4 text-center" style="font-size: 22px; font-family: Times New Roman;"> 
-                      PČ.priežiūra@gmail.com
+                    <div class="col-md-6">
+                      <label for="menesis" class="form-label" style="font-family: Impact; font-size: 20px;">Mėnesis</label>
+                      <input value="{{ $working_days->menesis }}" type="text" class="form-control" id="menesis" name="menesis">
                     </div>
+                    <div class="col-md-6">
+                      <label for="diena" class="form-label" style="font-family: Impact; font-size: 20px;">Diena</label>
+                      <input value="{{ $working_days->diena }}" type="number" class="form-control" id="diena" name="diena">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="laisvumas" class="form-label" style="font-family: Impact; font-size: 20px;">Nurodytos darbo laisvos valandos</label>
+                      <input value="{{ $working_days->laisvumas }}" type="text" class="form-control" id="laisvumas" name="laisvumas">
+                    </div>
+                    <div class="col-12" style="margin-top: 40px;">
+                      <button type="submit" class="btn btn-outline-success btn-lg">Redaguoti</button>
+                    </div>
+                  </form>
+                  </div>           
               </div>
-            </div>
-            <h1 class="text-center p-4" style="font-family: Impact; font-size: 45px; color:#5F9EA0; margin-top: 40px;">Taisyklės kaip užsisakyti paslaugą</h1>
-            <ul class="taisykliuSarasas" style="font-size: 20px; font-family: Times New Roman;">
-              <li>Pirmiausia, kad galėtumėte matyti vartotojui priskiriamus visus puslapius turite prisiregistruoti</li>
-              <li>Prisiregistravus būtina užpildyti apie save bei savo šunio duomenis profilio puslapyje, kitaip užsisakyti prižiūrėjimo paslaugos negalėsite.</li>
-              <li>Peržvelkite kainų puslapio, kuriame nurodytos 1 valandos kainos tiek „Šunų prižiūrėjimas prižiūrėtojo namuose“ pas kurį paliksite savo augintini , tiek „Šunų prižiūrėjimas šuns savininko namuose“ tai yra pas jumis namuose.</li>
-              <li>Peržvelkite paslaugų puslapio, kuriame nurodyta kaip jūsų šuo bus prižiūrimas tiek „Šunų prižiūrėjimas prižiūrėtojo namuose“ pas kurį paliksite savo augintini , tiek „Šunų prižiūrėjimas šuns savininko namuose“ tai yra pas jumis namuose.</li>
-              <li>Tuomet paslaugų puslapyje paspaudus „Užsisakyti“ mygtuką patenkate į nurodytų laisvų valandų puslapį.</li>
-              <li>Pasirinkite iš žemiau esančios lentelės paslaugos norima dieną, valandas bei užsisakykite paslaugą paskambine nuroditu telefonu</li>
-
-          </ul>
-            <img src="/image/dogs7.png" style="margin-top: 50px;" class="card-img-top">
-            </div>
-            </div>
-            </div>
-        </div>
     </main>
     <footer>
-        <div class="text-center p-3" style="background-image: linear-gradient(to right, #486A7C, #619BBA); margin-top: 40px;">© 2022 Darbą atliko Pijus Černiauskas</div>
+        <div class="text-center p-3" style="background-image: linear-gradient(to right, #486A7C, #619BBA); margin-top: 450px;">© 2022 Darbą atliko Pijus Černiauskas</div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>

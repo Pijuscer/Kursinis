@@ -48,10 +48,11 @@ body{
           </svg></button>
     </form>
     </div>
-    <table class="table table-striped">
+    <table class="table table-success table-striped" style="margin-top: 40px;">
         <thead>
           <tr>
             <th scope="col">#</th>
+            <th scope="col">User_id</th>
             <th scope="col">Vardas</th>
             <th scope="col">Pavardė</th>
             <th scope="col">Telefono numeris</th>
@@ -61,12 +62,20 @@ body{
             <th scope="col">Šuns svoris (kg)</th>
             <th scope="col">Draugiškas</th>
             <th scope="col">Alergiškas</th>
+            <th scope="col"></th>
+                        <th scope="col"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                          <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                        </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                          <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                        </svg></th>
           </tr>
         </thead>
     <tbody>
     @foreach ($DogCare as $DogCare2)
         <tr>
             <th scope="row">{{ $DogCare2->id }}</th>
+            <td>{{$DogCare2->user_id }}</td>
             <td>{{$DogCare2->vardas }}</td>
             <td>{{$DogCare2->pavarde }}</td>
             <td>{{$DogCare2->telefono_numeris }}</td>
@@ -88,8 +97,6 @@ body{
                   </svg></a>
             </td>
         </tr>
-
-    <p>Name: {{$DogCare2->vardas }}</p>
     </tbody>
 </div>
     @endforeach

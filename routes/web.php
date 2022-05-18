@@ -24,6 +24,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/welcome_email', function () {
+    return view('welcome_email');
+});
 
 Route::get('/dog_care', [DogCareController::class, 'index']);
 
@@ -34,6 +37,7 @@ Route::post('/dog_care/edit/{id}', [DogCareController::class, 'edit']);
 Route::get('/dog_care/remove/ask/{id}', [DogCareController::class, 'removeForm']);
 Route::get('/dog_care/remove/{id}', [DogCareController::class, 'remove']);
 Route::get('/dog_care/search', [DogCareController::class, 'search']);
+
 
 Route::get('/prices', [PricesController::class, 'viewForm1']);
 Route::post('/prices', [PricesController::class, 'store']);
@@ -55,7 +59,12 @@ Route::get('/add_cares/remove/{id}', [CareController::class, 'remove']);
 Route::get('/working_days', [WorkingDayController::class, 'viewForm']);
 Route::post('/working_days', [WorkingDayController::class, 'store']);
 Route::get('/working_days', [WorkingDayController::class, 'index']);
+Route::get('/working_days/edit/{id}', [WorkingDayController::class, 'editForm']);
+Route::post('/working_days/edit/{id}', [WorkingDayController::class, 'edit']);
+Route::get('/working_days/remove/ask/{id}', [WorkingDayController::class, 'removeForm']);
+Route::get('/working_days/remove/{id}', [WorkingDayController::class, 'remove']);
 Route::get('/working_days/search', [WorkingDayController::class, 'search']);
+Route::get('/order_care/search2', [WorkingDayController::class, 'search2']);
 Route::get('/order_care', [WorkingDayController::class, 'index2']);
 
 ///Route::get('/order_care', function () {

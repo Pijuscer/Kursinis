@@ -47,6 +47,9 @@ body{
 	font-family: "Franklin Gothic Demi";
 	padding-right: .50rem !important;
 }
+.searchTerm{
+    width: 350px;
+}
         </style>
     </head>
     <body class="antialiased">
@@ -66,7 +69,6 @@ body{
                 <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                 <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
                 <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
-                <a href="{{ url('/orders') }}" class="linkai nav-link">Užsakymai</a>
                   <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                           {{ Auth::user()->name }}
@@ -85,7 +87,10 @@ body{
               <div class="d-flex justify-content-center">
                 <div class="col-md-10">
                     <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0;">Paslaugų grafikas</h1>
-                    <h1 class="text-center p-4" style="font-family: Impact; font-size: 23px;">Pasirinkite iš žemiau esančios lentelės norima dieną bei surašykite tos dienos (metus, mėnesi ir norimas valandas) į tam skirtus laukus</h1>
+                    <h1 class="text-center p-4" style="font-family: Impact; font-size: 23px;">Pasirinkite iš žemiau esančios lentelės paslaugos norima dieną, valandas bei užsisakykite paslaugą paskambine nuroditu telefonu</h1>
+                    <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0;"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-telephone-forward-fill" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zm10.761.135a.5.5 0 0 1 .708 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 0 1-.708-.708L14.293 4H9.5a.5.5 0 0 1 0-1h4.793l-1.647-1.646a.5.5 0 0 1 0-.708z"/>
+                    </svg> +37061111111</h1>
                     @if ($errors->any())
                       <div class="alert alert-danger">
                         <ul>
@@ -95,48 +100,18 @@ body{
                         </ul>
                       </div>
                     @endif
-                    <form action="" method="POST" class="row g-3" style="margin-top: 40px;">
-                      @csrf
-                      <div class="col-md-6">
-                        <label for="metai" class="form-label" style="font-family: Impact; font-size: 20px;">Metai</label>
-                        <input value="{{ old('metai') }}" type="text" class="form-control" id="metai" name="metai">
-                      </div>
-                      <div class="col-md-6">
-                        <label for="menesis" class="form-label" style="font-family: Impact; font-size: 20px;">Mėnesis</label>
-                        <input value="{{ old('menesis') }}" type="text" class="form-control" id="menesis" name="menesis">
-                      </div>
-                      <div class="col-md-6">
-                        <label for="diena" class="form-label" style="font-family: Impact; font-size: 20px;">Diena</label>
-                        <input value="{{ old('diena') }}" type="text" class="form-control" id="diena" name="diena">
-                      </div>
-                      <div class="col-md-6">
-                        <label for="laisvumas" class="form-label" style="font-family: Impact; font-size: 20px; ">Pasirinkite valandas iš pasirenktos dienos</label>
-                        <input value="{{ old('laisvumas') }}" type="text" class="form-control" id="laisvumas" name="laisvumas">
-                      </div>
-                      <h1 class="text-center p-4" style="font-family: Impact; font-size: 40px; color:#5F9EA0; margin-top: 60px;">Pasirinkite kur bus prižiūrimas jūsų augintinis</h1>
-                      <div class="row justify-content-center">
-                      <div class="form-check col-md-5">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked" style="font-family: Impact; font-size: 20px;">
-                          Šuns prižiūrėjimas prižiūrėtojo namuose
-                        </label>
-                      </div>
-                      <div class="form-check col-md-5">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault" style="font-family: Impact; font-size: 20px;">
-                          Šuns prižiūrėjimas savininko namuose
-                        </label>
-                      </div>
-                      </div>
-                      <h1 class="text-center p-4" style="font-family: Impact; font-size: 25px; color:red;">Būtina pasirinkti norimą prižiūrėjimo būda kitaip paslaugos negalėsite užsisakyti</h1>
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end " style="margin-top: 40px;">
-                        <button type="submit" class="btn btn-outline-success btn-lg ">Paieška</button>
-                        <button type="submit" class="btn btn-outline-success btn-lg ">Užsisakyti</button>
-                        
-                      </div>
-                    </form>
                     </div>           
                 </div>
+                <div class="row justify-content-center" style="margin-top: 40px;">
+                  <div class="col-4 ">
+                  <form action="/order_care/search2" method="get">
+                      <input class="searchTerm" type="text" placeholder="Paieška.." name="query">
+                      <button class="btn btn-outline-info" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg></button>
+                  </form>
+                  </div>
+                  </div>
                 <div class="row justify-content-center">
                   <div class="col-6 ">
                   <table class="table table-success table-striped" style="margin-top: 60px;">
