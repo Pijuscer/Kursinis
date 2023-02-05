@@ -8,6 +8,6 @@
       <p class="card-text">{{$Dog_care->description}}</p>
       <a href="/" class="btn btn-primary">No</a>
       <a href="/dog_cares/remove/{{$Dog_care->id}}" class="btn btn-primary">Yes</a>
-      </div>
+    </div>
   </div>
   @endsection
