@@ -1,4 +1,18 @@
 # About
+A dog care website where users can reservation their time after registering and filling out a profile about themselves and their dog.
+# Features
+* Created user registration and login system using Laravel Jetstream.
+* Admin has access to the entire system.
+* Admin can add, edit and delete maintenance hourly price.
+* Admin can add, edit and delete care features in both the caretaker's home and the dog owner's home.
+* Admin can add, edit and delete available reservation times.
+* Admin can see all orders, users profiles informations.
+* The user can see about, prices, profile, maintenance, selection of reservation times, orders pages.
+* The user can add a profile about himself and his dog.
+* The user can choose the caring for his dog from the times specified by the admin and make a reservation.
+* The user can only see his orders.
+# Technologies used
+The project is created using Laravel framework, Laravel Jetstream, HTML, CSS, Bootstrap, PHP, Database
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
