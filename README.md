@@ -2,6 +2,7 @@
 A dog care website where users can reservation their time after registering and filling out a profile about themselves and their dog.
 # Features
 * Created user registration and login system using Laravel Jetstream.
+* Validation done in the required places.
 * Admin has access to the entire system.
 * Admin can add, edit and delete maintenance hourly price.
 * Admin can add, edit and delete care features in both the caretaker's home and the dog owner's home.
