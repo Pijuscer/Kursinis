@@ -13,7 +13,7 @@ A dog care website where users can reservation their time after registering and 
 * The user can choose the caring for his dog from the times specified by the admin and make a reservation.
 * The user can only see his orders.
 # Technologies used
-The project is created using Laravel framework, Laravel Jetstream, HTML, CSS, Bootstrap, PHP, Database
+The project is created using Laravel framework, Laravel Jetstream, HTML, CSS, Bootstrap, PHP, Database SQlite.
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
